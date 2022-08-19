@@ -120,9 +120,11 @@ const ResponsiveAppBar = () => {
                   return (
 
 
-                    <MenuItem key={page.id} sx={{ width: 5000, padding: 2 }} onClick={handleCloseNavMenu}>
+                    <MenuItem key={page.id} onClick={handleCloseNavMenu}>
                       <Link href={`${page.targetUrl}`} >
-                        <a>jjj</a>
+                        <Button>
+                          <a>jjj</a>
+                        </Button>
                       </Link>
                     </MenuItem>
 
@@ -186,9 +188,7 @@ const ResponsiveAppBar = () => {
         </Container>
       </AppBar>
       <Toolbar />
-      <Link href="szolgaltatasok"><a>szolgaltatasok</a></Link>
-      <div></div>
-      <Link href="/szolgaltatasok"><a>szolgaltatasok</a></Link>
+
     </>
   );
 };
