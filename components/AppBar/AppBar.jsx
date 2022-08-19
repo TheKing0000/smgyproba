@@ -118,13 +118,15 @@ const ResponsiveAppBar = () => {
               >
                 {pagess.map((page) => {
                   return (
-                    <Link href={`${page.targetUrl}`} key={page.id}>
-                      <MenuItem sx={{ width: 5000, padding: 2 }} onClick={handleCloseNavMenu}>
 
-                        <Typography textAlign="center">{page.name}</Typography>
 
-                      </MenuItem>
-                    </Link>
+                    <MenuItem key={page.id} sx={{ width: 5000, padding: 2 }} onClick={handleCloseNavMenu}>
+                      <Link href={`${page.targetUrl}`} >
+                        <Typography sx={{ backgroundColor: "red" }} component="a" textAlign="center">{page.name}</Typography>
+                      </Link>
+                    </MenuItem>
+
+
                   )
 
                 }
