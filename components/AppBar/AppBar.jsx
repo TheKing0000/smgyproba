@@ -122,7 +122,7 @@ const ResponsiveAppBar = () => {
 
                     <MenuItem key={page.id} sx={{ width: 5000, padding: 2 }} onClick={handleCloseNavMenu}>
                       <Link href={`${page.targetUrl}`} >
-                        <Typography sx={{ backgroundColor: "red" }} component="a" textAlign="center">{page.name}</Typography>
+                        <a>jjj</a>
                       </Link>
                     </MenuItem>
 
