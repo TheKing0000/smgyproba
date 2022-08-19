@@ -12,6 +12,7 @@ import MenuItem from '@mui/material/MenuItem';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 
 import Link from 'next/link';
+import { textAlign } from '@mui/system';
 
 
 
@@ -120,10 +121,12 @@ const ResponsiveAppBar = () => {
                   return (
 
 
-                    <MenuItem key={page.id} onClick={handleCloseNavMenu}>
+                    <MenuItem sx={{ width: "900px" }} key={page.id} onClick={handleCloseNavMenu}>
                       <Link href={`${page.targetUrl}`} >
-                        <Button>
-                          <a>jjj</a>
+                        <Button
+                          style={{ justifyContent: "flex-start" }}
+                          sx={{ width: 1 }}>
+                          <a>{page.name}</a>
                         </Button>
                       </Link>
                     </MenuItem>
@@ -175,7 +178,10 @@ const ResponsiveAppBar = () => {
                       }}
 
                     >
-                      {page.name}
+                      <a>
+                        {page.name}
+                      </a>
+
 
                     </Button>
                   </Link>
