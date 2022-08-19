@@ -186,7 +186,9 @@ const ResponsiveAppBar = () => {
         </Container>
       </AppBar>
       <Toolbar />
-
+      <Link href="szolgaltatasok"><a>szolgaltatasok</a></Link>
+      <div></div>
+      <Link href="/szolgaltatasok"><a>szolgaltatasok</a></Link>
     </>
   );
 };
