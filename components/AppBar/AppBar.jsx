@@ -11,13 +11,35 @@ import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import HealthAndSafetyIcon from '@mui/icons-material/HealthAndSafety';
 
-import { purple } from '@mui/material/colors';
+import Link from 'next/link';
 
 
 
+const pagess = [
+  {
+    id: 1,
+    name: 'Szolgáltatások',
+    targetUrl: "szolgaltatasok"
+  },
+  {
+    id: 2,
+    name: 'Munkatársaink',
+    targetUrl: "munkatarsaink"
+  },
+  {
+    id: 3,
+    name: 'Áraink',
+    targetUrl: "araink"
+  },
+  {
+    id: 4,
+    name: 'Kapcsolat',
+    targetUrl: "kapcsolat"
+  }
+
+]
 
 
-const pages = ['Szolgáltatások', 'Munkatársaink', 'Áraink', 'Kapcsolat'];
 
 const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -40,24 +62,30 @@ const ResponsiveAppBar = () => {
       <AppBar position="fixed" sx={{ marginBottom: 100 }}>
         <Container maxWidth="xl">
           <Toolbar disableGutters>
-            <HealthAndSafetyIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-            <Typography
-              variant="h6"
-              noWrap
-              component="a"
-              href="/"
-              sx={{
-                mr: 2,
-                display: { xs: 'none', md: 'flex' },
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              SMGY
-            </Typography>
+            <Link href="/">
+              <Box sx={{ display: "flex" }}>
+                <HealthAndSafetyIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
+
+                <Typography
+                  variant="h6"
+                  noWrap
+                  component="a"
+                  href="/"
+                  sx={{
+                    mr: 2,
+                    display: { xs: 'none', md: 'flex' },
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
+                  }}
+                >
+                  SMGY
+
+                </Typography>
+              </Box>
+            </Link>
 
             <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
               <IconButton
@@ -88,47 +116,68 @@ const ResponsiveAppBar = () => {
                   display: { xs: 'block', md: 'none' },
                 }}
               >
-                {pages.map((page) => (
-                  <MenuItem sx={{ width: 5000, padding: 2 }} key={page} onClick={handleCloseNavMenu}>
-                    <Typography textAlign="center">{page}</Typography>
-                  </MenuItem>
-                ))}
+                {pagess.map((page) => {
+                  return (
+                    <Link href={`${page.targetUrl}`} key={page.id}>
+                      <MenuItem sx={{ width: 5000, padding: 2 }} onClick={handleCloseNavMenu}>
+
+                        <Typography textAlign="center">{page.name}</Typography>
+
+                      </MenuItem>
+                    </Link>
+                  )
+
+                }
+
+                )}
               </Menu>
             </Box>
-            <HealthAndSafetyIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-            <Typography
-              variant="h5"
-              noWrap
-              component="a"
-              href=""
-              sx={{
-                mr: 2,
-                display: { xs: 'flex', md: 'none' },
-                flexGrow: 1,
-                fontFamily: 'monospace',
-                fontWeight: 700,
-                letterSpacing: '.3rem',
-                color: 'inherit',
-                textDecoration: 'none',
-              }}
-            >
-              SMGY
-            </Typography>
-            <Box sx={{ marginRight: 4, justifyContent: 'right', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-              {pages.map((page) => (
-                <Button
 
-                  key={page}
-                  onClick={handleCloseNavMenu}
+            <Link href="/">
+              <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                <HealthAndSafetyIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+
+                <Typography
+                  variant="h5"
+                  noWrap
+                  component="a"
+                  href=""
                   sx={{
-                    my: 2, marginRight: 3, color: "white", display: 'block',
+                    mr: 2,
+                    display: { xs: 'flex', md: 'none' },
+                    flexGrow: 1,
+                    fontFamily: 'monospace',
+                    fontWeight: 700,
+                    letterSpacing: '.3rem',
+                    color: 'inherit',
+                    textDecoration: 'none',
                   }}
-
                 >
-                  {page}
-                </Button>
+                  SMGY
+                </Typography>
+              </Box>
+            </Link>
 
-              ))}
+            <Box sx={{ marginRight: 4, justifyContent: 'right', flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+              {pagess.map((page) => {
+                return (
+                  <Link key={page.id} href={`${page.targetUrl}`}>
+                    <Button
+
+
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        my: 2, marginRight: 3, color: "white", display: 'block',
+                      }}
+
+                    >
+                      {page.name}
+
+                    </Button>
+                  </Link>
+
+                )
+              })}
             </Box>
           </Toolbar>
 
